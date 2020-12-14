@@ -18,13 +18,19 @@ function Stopwatch(){
 
         running = false;
         endTime = new Date();  
-              
+
+        //calculate seconds in milliseconds and convert to seconds 
+        //then add this value to duration variable
         const seconds = (endTime.getTime() - startTime.getTime() / 1000);
         duration += seconds;
     };
 
     this.reset() = function(){
-        
+        //set variables to their initial values
+        startTime = null;
+        endTime = null;
+        running = false;
+        duration = 0;        
     };
 
 }
