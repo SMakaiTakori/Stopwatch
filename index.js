@@ -1,18 +1,16 @@
 function Stopwatch(){
     let startTime, endTime, running, duration = 0;
 
-    this.start() = function(){
-
+    this.start = function(){
         if(running)
             throw new Error('Stopwatch has already started.');
 
         running = true;
-
         startTime = new Date();
 
     };
 
-    this.stop() = function(){
+    this.stop = function(){
         if(!running)
             throw new Error('Stopwatch has stopped.');
 
@@ -25,12 +23,18 @@ function Stopwatch(){
         duration += seconds;
     };
 
-    this.reset() = function(){
-        //set variables to their initial values
+    this.reset = function(){
+        //reset variables to their initial values
         startTime = null;
         endTime = null;
         running = false;
         duration = 0;        
     };
+
+    //implement the read-only property 'duration' by using a getter
+    Object.defineProperty(this, 'duration', {
+        get: function() { return duration; }
+    });
+
 
 }
